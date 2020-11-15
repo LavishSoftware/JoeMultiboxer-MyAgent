@@ -1,0 +1,100 @@
+{
+    "$schema": "http://www.lavishsoft.com/schema/lgui2Package.json",    
+    "templates": {
+        "metascript": {
+            "autoStart": true,
+            "functions": [
+                {
+                    "type": "function",
+                    "name": "main",
+                    "code": [
+                        "while 1",
+                        "waitframe"
+                    ]
+                }
+            ]
+        }
+    },
+    "metaScripts": [
+        {
+            "jsonTemplate": "metascript",
+            "name": "My MetaScript",
+            "objectdefs": [
+                {
+                    "name": "myType",
+                    "variables": [
+                        {
+                            "type": "string",
+                            "name": "MyVariable",
+                            "value": {
+                                "name": "Name of something"
+                            }
+                        }
+                    ],
+                    "functions": [
+                        {
+                            "type": "method",
+                            "name": "Initialize",
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "Param1"
+                                }
+                            ],
+                            "code": [
+                                "echo Initial value=${MyVariable.Escape}",
+                                "MyVariable:Set[\"${Param1.Escape}\"]",
+                                "echo New value=${MyVariable.Escape}"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "variables": [
+                {
+                    "type":"myType",
+                    "name": "MyObject",
+                    "scope":"global",
+                    "value":{
+                        "name":"A different name of something"
+                    }
+                }
+            ]
+        }
+    ],
+    "elements": [
+        {
+            "type": "window",
+            "name": "test.window",
+            "title": "Joe Multiboxer",
+            "minSize":[150,50],
+            "content":{
+                "type":"stackpanel",
+                "orientation":"horizontal",
+                "children":[
+                    {
+                        "type":"button",
+                        "content":"Do Something",
+                        "eventHandlers":{
+                            "onPress":{
+                                "type":"code",
+                                "code":"echo Clicked!"
+                            }
+                        }
+                    },
+                    {
+                        "type":"button",
+                        "content":"Fullscreen",
+                        "margin":[5,0,0,0],
+                        "eventHandlers":{
+                            "onPress":{
+                                "type":"code",
+                                "code":"WindowCharacteristics -frame none -size fullscreen -pos 0,0"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

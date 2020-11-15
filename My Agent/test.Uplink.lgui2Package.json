@@ -1,0 +1,128 @@
+{
+    "$schema": "http://www.lavishsoft.com/schema/lgui2Package.json",    
+    "templates": {
+        "metascript": {
+            "autoStart": true,
+            "functions": [
+                {
+                    "type": "function",
+                    "name": "main",
+                    "code": [
+                        "while 1",
+                        "waitframe"
+                    ]
+                }
+            ]
+        }
+    },
+    "metaScripts": [
+        {
+            "jsonTemplate": "metascript",
+            "name": "My MetaScript",
+            "objectdefs": [
+                {
+                    "name": "myType",
+                    "variables": [
+                        {
+                            "type": "string",
+                            "name": "MyVariable",
+                            "value": {
+                                "name": "Name of something"
+                            }
+                        }
+                    ],
+                    "functions": [
+                        {
+                            "type": "method",
+                            "name": "Initialize",
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "Param1"
+                                }
+                            ],
+                            "code": [
+                                "echo Initial value=${MyVariable.Escape}",
+                                "MyVariable:Set[\"${Param1.Escape}\"]",
+                                "echo New value=${MyVariable.Escape}"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "variables": [
+                {
+                    "type":"myType",
+                    "name": "MyObject",
+                    "scope":"global",
+                    "value":{
+                        "name":"A different name of something"
+                    }
+                }
+            ]
+        }
+    ],
+    "elements": [
+        {
+            "type": "window",
+            "name": "test.window",
+            "title": "Joe Multiboxer: Test",
+            "width": 150,
+            "height": 200,
+            "content":{
+                "type":"stackpanel",
+                "orientation":"vertical",
+                "children":[
+                    {
+                        "type":"button",
+                        "content":"🚀 Launch",
+                        "margin":[5,5,0,5],
+                        "eventHandlers":{
+                            "onPress":{
+                                "type":"method",
+                                "object":"JMBLauncher",
+                                "method":"Launch"
+                            }
+                        }
+                    },
+                    {
+                        "type":"button",
+                        "content":"Apply Window Layout",
+                        "margin":[5,5,0,5],
+                        "eventHandlers":{
+                            "onPress":{
+                                "type":"method",
+                                "object":"JMBLauncher",
+                                "method":"ApplyWindowLayout"
+                            }
+                        }
+                    },
+                    {
+                        "type":"button",
+                        "content":"Close All",
+                        "margin":[5,5,0,5],
+                        "eventHandlers":{
+                            "onPress":{
+                                "type":"method",
+                                "object":"JMBLauncher",
+                                "method":"CloseAll"
+                            }
+                        }
+                    },
+                    {
+                        "type":"button",
+                        "content":"Reload Agent",
+                        "margin":[5,5,0,5],
+                        "eventHandlers":{
+                            "onPress":{
+                                "type":"code",
+                                "code":"JMB.Agent[My Agent]:Stop:Start"
+                            }
+                        }
+                    }
+
+                ]
+            }
+        }
+    ]
+}

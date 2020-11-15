@@ -1,0 +1,43 @@
+{
+	"$schema": "http://www.lavishsoft.com/schema/agent.json",
+	"name": "My Agent",
+	"metadata": {
+
+	},
+	"platforms": {
+		"joe multiboxer session": {
+			"eventHandlers":{
+				"onAgentStartup": {
+					"code": [
+						"echo JMB session agent startup",
+						"LGUI2:LoadPackageFile[${This.Directory}/test.Session.lgui2Package.json]",
+						"run test.Session.iss"
+					]
+				},
+				"onAgentShutdown": {
+					"code": [
+						"echo JMB session agent shutdown",
+						"LGUI2:UnloadPackageFile[${This.Directory}/test.Session.lgui2Package.json]",
+						"endscript test.Session"
+					]
+				}
+					}
+		},
+		"joe multiboxer uplink": {
+			"eventHandlers":{
+				"onAgentStartup": {
+					"code": [
+						"LGUI2:LoadPackageFile[${This.Directory}/test.Uplink.lgui2Package.json]",
+						"run test.Uplink.iss"
+					]
+				},
+				"onAgentShutdown": {
+					"code": [
+						"LGUI2:UnloadPackageFile[${This.Directory}/test.Uplink.lgui2Package.json]",
+						"endscript test.Uplink"
+					]
+				}
+			}
+		}
+	}
+}
