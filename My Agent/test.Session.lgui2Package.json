@@ -64,6 +64,51 @@
     ],
     "elements": [
         {
+            "type":"videofeedsource",
+            "name":"test.mainVFXSource",
+            "horizontalAlignment": "stretch",
+            "verticalAlignment": "stretch",
+            "acceptsKeyboardFocus": false,
+            "acceptsMouseFocus": false
+        },
+        {
+            "type":"window",
+            "name":"test.vfxViews",
+            "visibility": "collapsed",
+            "title":"Joe Multiboxer: Video FX Views",
+            "width":600,
+            "height":100,
+            "minSize":[200,100],
+            "content":{
+                "type":"panel",
+                "horizontalAlignment": "stretch",
+                "verticalAlignment": "stretch",
+                "children":[
+                    {
+                        "type":"videofeed",
+                        "name":"test.vfx1",
+                        "feedName": "jmb1",
+                        "widthFactor":0.33,
+                        "heightFactor":1.0
+                    },
+                    {
+                        "type":"videofeed",
+                        "feedName": "jmb2",
+                        "widthFactor":0.33,
+                        "heightFactor":1.0,
+                        "xFactor":0.33
+                    },
+                    {
+                        "type":"videofeed",
+                        "feedName": "jmb3",
+                        "widthFactor":0.33,
+                        "heightFactor":1.0,
+                        "xFactor":0.66
+                    }
+                ]
+            }
+        },
+                {
             "type": "window",
             "name": "test.window",
             "title": "Joe Multiboxer",
@@ -74,11 +119,11 @@
                 "children":[
                     {
                         "type":"button",
-                        "content":"Do Something",
+                        "content":"Reload Agent",
                         "eventHandlers":{
                             "onPress":{
                                 "type":"code",
-                                "code":"echo Clicked!"
+                                "code":"JMB.Agent[My Agent]:Stop:Start"
                             }
                         }
                     },

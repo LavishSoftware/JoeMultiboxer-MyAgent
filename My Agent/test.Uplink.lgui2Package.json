@@ -62,21 +62,20 @@
             ]
         }
     ],
-    "elements": [
+    "elements": [        
         {
             "type": "window",
             "name": "test.window",
             "title": "Joe Multiboxer: Test",
-            "width": 150,
-            "height": 200,
             "content":{
                 "type":"stackpanel",
                 "orientation":"vertical",
+                "margin":[5],
                 "children":[
                     {
                         "type":"button",
                         "content":"🚀 Launch",
-                        "margin":[5,5,0,5],
+                        "margin":[5,5,5,0],
                         "eventHandlers":{
                             "onPress":{
                                 "type":"method",
@@ -88,7 +87,7 @@
                     {
                         "type":"button",
                         "content":"Apply Window Layout",
-                        "margin":[5,5,0,5],
+                        "margin":[5,5,5,0],
                         "eventHandlers":{
                             "onPress":{
                                 "type":"method",
@@ -99,8 +98,32 @@
                     },
                     {
                         "type":"button",
+                        "content":"Assign Global Hotkeys",
+                        "margin":[5,5,5,0],
+                        "eventHandlers":{
+                            "onPress":{
+                                "type":"method",
+                                "object":"JMBLauncher",
+                                "method":"AssignGlobalHotkeys"
+                            }
+                        }
+                    },
+                    {
+                        "type":"button",
+                        "content":"Show Consoles",
+                        "margin":[5,5,5,0],
+                        "eventHandlers":{
+                            "onPress":{
+                                "type":"method",
+                                "object":"JMBLauncher",
+                                "method":"ShowConsoles"
+                            }
+                        }
+                    },
+                    {
+                        "type":"button",
                         "content":"Close All",
-                        "margin":[5,5,0,5],
+                        "margin":[5,5,5,0],
                         "eventHandlers":{
                             "onPress":{
                                 "type":"method",
@@ -112,7 +135,7 @@
                     {
                         "type":"button",
                         "content":"Reload Agent",
-                        "margin":[5,5,0,5],
+                        "margin":[5,5,5,0],
                         "eventHandlers":{
                             "onPress":{
                                 "type":"code",
@@ -120,7 +143,6 @@
                             }
                         }
                     }
-
                 ]
             }
         }
