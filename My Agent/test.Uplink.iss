@@ -5,6 +5,8 @@ objectdef jmblauncher
         This:InstallCharacters
     }
 
+    variable uint LaunchSlots=3
+
     method InstallCharacters()
     {
         variable jsonvalue jo
@@ -13,7 +15,13 @@ objectdef jmblauncher
             "id":1,
             "display_name":"WoW Classic",
             "game":"WoW Classic",
-            "gameProfile":"WoW Classic Default Profile"
+            "gameProfile":"WoW Classic Default Profile",
+            "virtualFiles":[
+                {
+                    "pattern":"*/Config.WTF",
+                    "replacement":"{1}/Config.Generic.JMB.WTF"
+                }
+            ]
         }
         <$$"]
         JMB:AddCharacter["${jo.AsJSON~}"]
@@ -27,7 +35,7 @@ objectdef jmblauncher
         
 
         variable int Slot
-        for (Slot:Set[1] ; ${Slot}<=3 ; Slot:Inc)
+        for (Slot:Set[1] ; ${Slot}<=${LaunchSlots} ; Slot:Inc)
         {
             JMB:AddSlot
             JMB.Slot[${Slot}]:SetCharacter[1]

@@ -73,16 +73,26 @@
                 "margin":[5],
                 "children":[
                     {
-                        "type":"button",
-                        "content":"🚀 Launch",
+                        "type":"dockpanel",
                         "margin":[5,5,5,0],
-                        "eventHandlers":{
-                            "onPress":{
-                                "type":"method",
-                                "object":"JMBLauncher",
-                                "method":"Launch"
+                        "children":[
+                            {
+                                "type":"textbox",
+                                "textBinding":"JMBLauncher.LaunchSlots"
+                            },
+                            { 
+                                "type":"button",                             
+                                "horizontalAlignment":"center",
+                                "content":"🚀 Launch",
+                                "eventHandlers":{
+                                    "onPress":{
+                                        "type":"method",
+                                        "object":"JMBLauncher",
+                                        "method":"Launch"
+                                    }
+                                }
                             }
-                        }
+                        ]
                     },
                     {
                         "type":"button",
